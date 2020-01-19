@@ -1,0 +1,90 @@
+{% extends "videoplay/base.html"%}
+{% block content %}
+
+<div class="container fluid">
+                            <div class="row">
+                              <div class="col text-center">
+                                <div class="jumbotron">
+                                    <h1 class="display-4">Welcome!</h1>
+                                    <p class="lead">Thank you for your participation!</p>
+                                    <hr class="my-4">                                      {% comment %} <a href="{% url 'videoplay-videos' %}"><button type="button" id="startButton1" class="btn btn-primary btn-md" style="border-color:gray;background-color:rgb(8, 3, 56);;" name="part1" hidden>Experiment 1 <i2 class="arrow right"></i2></button></a> {% endcomment %}
+                                     {% comment %} <a href="{% url 'videoplay-videos2' %}"><button type="button" id="startButton2" class="btn btn-primary btn-md" style="border-color:gray;background-color:rgb(8, 3, 56);;" name="part2" hidden>Experiment 2 <i2 class="arrow right"></i2></button></a> {% endcomment %}
+                                    <br>
+                                    {% if user.is_authenticated %}
+                                    <h2>Terms and Conditions</h2>
+                                    <div class="scroll">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. 
+                                    Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, 
+                                    discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. 
+                                    This book is a treatise on the theory of ethics, 
+                                    very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32
+                                                                        Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, 
+                                    discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. 
+                                    This book is a treatise on the theory of ethics, 
+                                    very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32
+                                                                        Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, 
+                                    discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. 
+                                    This book is a treatise on the theory of ethics, 
+                                    very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32
+                                                                        Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, 
+                                    discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. 
+                                    This book is a treatise on the theory of ethics, 
+                                    very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32
+                                                                        Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, 
+                                    discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. 
+                                    This book is a treatise on the theory of ethics, 
+                                    very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32
+                                                                        Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, 
+                                    discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. 
+                                    This book is a treatise on the theory of ethics, 
+                                    very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32
+                                    </div>
+                                      <input id="agreebox" type="checkbox" onchange="toggle1()" name="vehicle"> I Agree
+                                      <input id="disagreebox" type="checkbox" onchange="toggle2()" name="vehicle"> I Disagree<br>
+                                       <h4 style="font-weight:bold;">Read the above terms and conditions <br>and check on "I Agree" to proceed</h4>
+                                       <form action="{%url 'videoplay-home' %}">
+                                      <button id="StartExperiment" type="submit" class="btn btn-primary btn-lg" disabled><a >Start Experiment</button>         
+                                      </form>         
+                                    {% else %}
+                                      <div>
+                                          <b>Need an Account?  </b>
+                                          <p></p>
+                                          <a name="signup" class="btn btn-primary btn-md" href="{%url 'register'%}" role="button">Sign Up!</a>
+                                          <br>
+                                          <br>
+                                          <b>Already have an Account?  </b>
+                                          <p></p>
+                                          <a name="login" class="btn btn-success btn-md" href="{%url 'login'%}" role="button">Login!</a>
+                                    {% endif %}
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+
+                </div>
+
+
+<style>
+.scroll {
+  background-color: lightgray;
+  width: 100%;
+  height: 450px;
+  overflow: scroll;
+  text-align:left;
+}
+</style>
+
+<script>
+var box1=document.getElementById("agreebox")
+var box2=document.getElementById("disagreebox")
+function toggle1(){
+box1.checked=true
+document.getElementById("StartExperiment").disabled=false
+box2.checked=false  
+}
+function toggle2(){
+box1.checked=false  
+box2.checked=true 
+document.getElementById("StartExperiment").disabled=true
+}
+</script>
+    {%endblock content%}

@@ -1,0 +1,12 @@
+0000001 vision-pc4.eng.uwaterloo.ca:/new_videos/10_1828/1920x1080_1.mp4
+0000002 vision-pc4.eng.uwaterloo.ca:/new_videos/10_1828/1920x1080_2.mp4
+0000003 vision-pc4.eng.uwaterloo.ca:/new_videos/15_1592/1920x1080_3.mp4
+0000004 vision-pc4.eng.uwaterloo.ca:/new_videos/15_1592/1920x1080_4.mp4
+0000005 vision-pc4.eng.uwaterloo.ca:/new_videos/10_1828/3840x2160_1.mp4
+0000006 vision-pc4.eng.uwaterloo.ca:/new_videos/10_1828/3840x2160_2.mp4
+0000007 vision-pc4.eng.uwaterloo.ca:/new_videos/13_438/3840x2160_3.mp4
+0000008 vision-pc4.eng.uwaterloo.ca:/new_videos/13_438/3840x2160_4.mp4
+0000009 vision-pc4.eng.uwaterloo.ca:/new_videos/10_1828/960x540_1.mp4
+0000010 vision-pc4.eng.uwaterloo.ca:/new_videos/10_1828/960x540_2.mp4
+0000011 vision-pc4.eng.uwaterloo.ca:/new_videos/10_1828/960x540_3.mp4
+0000012 vision-pc4.eng.uwaterloo.ca:/new_videos/10_1828/960x540_4.mp4

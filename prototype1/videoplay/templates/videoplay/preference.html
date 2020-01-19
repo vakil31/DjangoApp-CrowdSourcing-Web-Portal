@@ -1,0 +1,86 @@
+{% extends "videoplay/base.html"%}
+{% load static %}
+{% block content %}
+ <script type="text/javascript" src="{% static 'videoplay/jszip.js' %}"></script>
+ <script type="text/javascript" src="{% static 'videoplay/jszip.min.js' %}"></script>
+ <script type="text/javascript" src="{% static 'videoplay/FileSaver.js' %}"></script>
+ 
+ <head>
+    
+
+    <style>
+        p {
+        color: white
+}
+h2 {
+        color: white    
+}
+form {
+        color: white
+}
+.center form {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.center h2 {
+  margin: 0;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.center button {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  z-index: 15;
+  top: 80%;
+  left: 50%;
+  margin: 50px 0 0 -100px;
+  border-color:gray;
+  background-color:black;
+  border-width:3px;
+  color: white; 
+}
+.checkbox-inline, .radio-inline {
+    margin-left: 150px;
+    
+   
+
+}
+#main
+{
+  width:800px; 
+  margin:0 auto;
+  text-align: center;
+}
+    </style>
+  </head>
+  <body>
+  
+  <div id ="main" class="center" >
+    <h2 class="center"><font size="16">Which video's quality would you better?</font></h2>
+    
+    <form>
+        <font size="10"><label>
+              <input type="radio" id="radio1" name="optradio1" value="1">First
+                
+              </label>
+              
+      <label class="radio-inline">
+        <input type="radio" id="radio2" name="optradio1" value="2">Second
+      </label></font>
+     <font size="5"><button class="center" id="prefBtn" type="submit" onclick="preference()" >Submit</button></font>
+    </form>
+    
+  </div>
+  
+  </body>
+
+  {%endblock content%}

@@ -1,0 +1,25 @@
+{% extends "videoplay/base.html"%}
+{% load static %}
+{% block content %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<div class="container fluid">
+                            <div class="row">
+                              <div class="col text-center">
+                                <div class="jumbotron">
+                                    <h1 class="display-4">Experiment Completed!</h1>
+                                    <p class="lead">Thank you for your participation!</p>
+                                    <hr class="my-4">
+                                      <a class="btn btn-primary btn-lg" href="{%url 'videoplay-download1' %}" role="button" name="Agree">Start Next Experiment</a>
+                                      <a class="btn btn-primary btn-lg" href="{%url 'logout'%}" role="button" name="Agree">Logout</a>
+                                    
+                                    <br>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+
+                </div>
+
+
+
+{% endblock content %}

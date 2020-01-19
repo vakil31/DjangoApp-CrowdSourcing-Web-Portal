@@ -1,0 +1,147 @@
+{% extends "videoplay/base.html"%}
+{% load static %}
+{% block script %}
+{{name_list}} 
+{% endblock %}
+{% block content %}
+ <script>
+ //var percentagevalue=document.getElementById("percentage");
+  var objs = '{{urls}}'.split(',');
+  var double_stimulus_list='{{name_list}}'
+ function createZip()
+{
+document.getElementById("downloadButton").hidden=true;
+var element = document.getElementById("myprogressBar");    
+document.getElementById("Progress_Status").hidden=false;    
+document.getElementById("messagedownload").hidden=false;    
+var width = 1; 
+var zip = new JSZip();
+var count = 0;
+var num_of_videos=objs.length;
+var zipFilename = "video.zip";
+console.log(objs);
+objs.forEach(function(url){
+      if (width >= 100) { 
+      clearInterval(identity); 
+    } 
+  console.log("Starting download before")
+  // loading a file and add it in a zip file
+  JSZipUtils.getBinaryContent(url, function (err, data) {
+     if(err) {
+        throw err; // or handle the error
+     }
+
+     var namef = url.split('/');
+     var filename = namef[namef.length-1];
+     console.log("Starting download")
+     width=width+(75)/num_of_videos;
+     element.style.width = width + '%';
+     console.log(filename);
+     zip.file(filename, data, {binary:true});
+     count++;
+     console.log(count)
+     if (count == objs.length) {    
+      console.log("Starting zip")
+      document.getElementById("messagezip").hidden=false;
+      document.getElementById("messagedownload").hidden=true;
+       zip.generateAsync({type:'blob'}).then(function(content) {
+          saveAs(content, zipFilename);
+      width=width+(96.2)/num_of_videos;
+      element.style.width = width + '%';
+      document.getElementById("messagezip").hidden=true; 
+      document.getElementById("messagethanks").hidden=false; 
+      document.getElementById("startButton1").hidden=false; 
+      document.getElementById("startButton2").hidden=false; 
+       
+       });   
+
+    }
+  });
+});
+}
+ 
+ </script> 
+ 
+ <div class="container fluid">
+    <div class="row">
+      <div class="col text-center">
+                                  
+                                    <h1 class="display-4 text-white">Welcome!</h1>
+                                    <p class="lead text-muted">Thank you for your participation!</p>
+                                    <hr class="my-4 text-center">
+                                    
+                                    <div class="list-group text-left text-white">
+                                    <ol>
+                                    <li> As Step one download the videos using download button given below</li>
+                                    <li>Once Videos are Downloaded click "Start Watching" and provide the location to the downloaded videos by clicking the "Select Videos" button on the next page</li>
+                                    <li>The Study comprises in total of 20 Videos,Pause the video at any moment you want to take a break.</li>
+                                    <li>At the end of each video enter your rating from scale of 1-10</li>
+                                    <li>Study will end only when ratings are given to all the videos</li>
+                                   </ol>
+                                
+                                </div>
+                                    {% if user.is_authenticated %}
+   
+                                    <br>
+                                    <button type="button" id="downloadButton" class="btn btn-primary btn-md" style="width:100%;border-color:gray;background-color:rgb(8, 3, 56);;border-width:3px " onclick ="createZip()" name="download"><i class="fa fa-download"></i> Download Your Personalized Videos for the Ratings</button>
+                                    <div id="Progress_Status" hidden> 
+                                      <div id="myprogressBar">
+                                      {% comment %} <span id="percentage">0%</span> {% endcomment %}
+                                      </div> 
+                                    </div> 
+                                    <p id="messagedownload" style="color:white;font-size: 20px" hidden>Please wait while the videos are being downloaded......<p>
+                                    <p id="messagezip" style="color:white;font-size: 20px" hidden>Creating a zip file.....<p>
+                                    <p id="messagethanks" style="color:white;font-size: 20px" hidden>Thanks for waiting. Proceed to the experiment<p>
+                                        <br/>
+                                        <br/>
+                                          <br/>
+                                            <br/>
+                                          <a href="{% url 'videoplay-videos' %}"><button type="button" id="startButton1" class="btn btn-primary btn-md" style="border-color:gray;background-color:rgb(8, 3, 56);;" name="part1" hidden>Experiment 1 <i2 class="arrow right"></i2></button></a>
+                                          <a href="{% url 'videoplay-videos2' %}"><button type="button" id="startButton2" class="btn btn-primary btn-md" style="border-color:gray;background-color:rgb(8, 3, 56);;" name="part2" hidden>Experiment 2 <i2 class="arrow right"></i2></button></a>
+                                          
+                                    {% else %}
+                                      <div>
+                                          <b>Need an Account?  </b>
+                                          <p></p>
+                                          <a  class="btn btn-primary btn-md" href="{%url 'register'%}" role="button">Sign Up!</a>
+                                          <br>
+                                          <br>
+                                          <b>Already have an Account?  </b>
+                                          <p></p>
+                                          <a class="btn btn-success btn-md" href="{%url 'login'%}" role="button">Login!</a>
+                                    {% endif %}
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                </div>
+
+<style> 
+#Progress_Status { 
+  width: 99.95%; 
+  background-color: #ddd; 
+} 
+  
+#myprogressBar { 
+  width: 0%; 
+  height: 20px; 
+  background-color: #4CAF50; 
+} 
+
+#percentage{
+  position: relative;
+  left: 2500%;
+  content: "20";
+}
+#startButton1{
+  position: relative;
+  bottom: 70px;
+}
+
+#startButton2{
+  position: relative;
+  bottom: 70px;
+}
+</style>  
+
+  {%endblock content%}
